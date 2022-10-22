@@ -32,6 +32,10 @@
                                 
                             </TextBlock.Text>
                         </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="CreateBtn">Редактировать</Button>
+                            <Button x:Name="DeleteBtn">Удалить</Button>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
                 
