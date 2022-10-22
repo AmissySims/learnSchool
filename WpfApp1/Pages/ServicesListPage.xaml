@@ -25,7 +25,7 @@
                         <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
                         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  >
                             <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} рублей за {1}">
+                                <MultiBinding StringFormat="{}{0:F0} рублей за {1}">
                                     <Binding Path="Cost"></Binding>
                                     <Binding Path="DurationInSeconds"></Binding>
                                 </MultiBinding>
