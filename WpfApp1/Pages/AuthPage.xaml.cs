@@ -30,5 +30,31 @@ namespace WpfApp1.Pages
         {
             Navigation.NextPage(new Nav("Регистрация", new RegPage1())); 
         }
+
+        private void Entrance_Click(object sender, RoutedEventArgs e)
+        {
+            string login = LoginTb.Text.Trim();
+            string password = PasswordTb.Text.Trim();
+
+            if(login.Length == 0 && password.Length == 0)
+            {
+                MessageBox.Show("Заполните поля");
+            }
+            else
+            {
+                var AuthUser = BDConnect.db.User.ToList().Find(x => x.Login == login && x.Password == password);
+                if(AuthUser == null)
+                {
+                    MessageBox.Show("Такого пользователя не существует");
+                }
+                else
+                {
+                    Navigation.isAuth = true;
+                    Navigation.NextPage(new Nav("Список услуг", new ServicesListPage()));
+                   
+                }
+
+            }
+        }
     }
 }

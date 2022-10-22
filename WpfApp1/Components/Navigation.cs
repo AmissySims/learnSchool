@@ -13,6 +13,7 @@ namespace WpfApp1.Components
     internal class Navigation
     {
         public static bool isAuth = false;//авторизовался ли пользователь
+        public static Client AuthClient;
         public static MainWindow main;// доступ к элементам к MainWindow
         public static List<Nav> navs = new List<Nav>();// история посещений пользователя    
 
@@ -21,8 +22,6 @@ namespace WpfApp1.Components
            
                 navs.Add(nav);
                 Update(nav);
-           
-           
         }
         public static void BackPage()
         {

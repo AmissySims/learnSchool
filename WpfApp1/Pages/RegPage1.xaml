@@ -10,10 +10,7 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock>Имя</TextBlock>
-                <TextBox x:Name="NameTb"></TextBox>
-            </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock>Логин</TextBlock>
                 <TextBox x:Name="LoginTb" ></TextBox>
@@ -23,7 +20,7 @@
                 <TextBox x:Name="PasswordTb"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Style="{StaticResource MyButton}" x:Name="Clear">Очистить</Button>
+                <Button Style="{StaticResource MyButton}" x:Name="Clear" Click="Clear_Click">Очистить</Button>
                 <Button Style="{StaticResource MyButton}" x:Name="Registration" Click="Registration_Click">Зарегистрироваться</Button>
             </StackPanel>
         </StackPanel>
