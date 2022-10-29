@@ -42,15 +42,16 @@ namespace WpfApp1.Pages
                 filterServices = filterServices.OrderBy(x => x.Cost);
             }
 
-            if (DiscountSortCb.Tag.ToString() == "2")
-                filterServices = filterServices.OrderByDescending(x => x.Discount >= 0 && x.Discount < 5);
-            else if (DiscountSortCb.Tag.ToString() == "3")
+            var DiscountCb = DiscountSortCb.SelectedItem as ComboBoxItem;
+            if (DiscountCb.Tag.ToString() == "1")
+                filterServices = filterServices.Where(x => x.Discount >= 0 && x.Discount < 5);
+            else if (DiscountCb.Tag.ToString() == "2")
                 filterServices = filterServices.Where(x => x.Discount >= 5 && x.Discount < 15);
-            else if (DiscountSortCb.Tag.ToString() == "4")
+            else if (DiscountCb.Tag.ToString() == "3")
                 filterServices = filterServices.Where(x => x.Discount >= 15 && x.Discount < 30);
-            else if (DiscountSortCb.Tag.ToString() == "5")
+            else if (DiscountCb.Tag.ToString() == "4")
                 filterServices = filterServices.Where(x => x.Discount >= 30 && x.Discount < 70);
-            else if (DiscountSortCb.Tag.ToString() == "6")
+            else if (DiscountCb.Tag.ToString() == "5")
                 filterServices = filterServices.Where(x => x.Discount >= 70 && x.Discount < 100);
 
             ServiceList.ItemsSource = filterServices.ToList();
