@@ -35,29 +35,33 @@ namespace WpfApp1.Pages
            IEnumerable<Service> filterServices = BDConnect.db.Service;
             if (SortCb.Text == "По возрастанию")
             {
-                filterServices = filterServices.OrderByDescending(x => x.Cost);
+                filterServices = filterServices.OrderByDescending(x => x.Cost); 
             }
             else 
             {
-                filterServices = filterServices.OrderBy(x => x.Cost);
+                filterServices = filterServices.OrderBy(x => x.Cost); //по убыванию
             }
 
             var DiscountCb = DiscountSortCb.SelectedItem as ComboBoxItem;
-            if (DiscountCb.Tag.ToString() == "1")
-                filterServices = filterServices.ToList();
-            else if (DiscountCb.Tag.ToString() == "2")
-                filterServices = filterServices.Where(x => x.Discount >= 0 && x.Discount < 5);
-            else if (DiscountCb.Tag.ToString() == "3")
-                filterServices = filterServices.Where(x => x.Discount >= 5 && x.Discount < 15);
-            else if (DiscountCb.Tag.ToString() == "4")
-                filterServices = filterServices.Where(x => x.Discount >= 15 && x.Discount < 30);
-            else if (DiscountCb.Tag.ToString() == "5")
-                filterServices = filterServices.Where(x => x.Discount >= 30 && x.Discount < 70);
-            else if (DiscountCb.Tag.ToString() == "6")
-                filterServices = filterServices.Where(x => x.Discount >= 70 && x.Discount < 100);
+            if (DiscountCb != null)
+            {
+                if (DiscountCb.Tag.ToString() == "1")
+                    filterServices = BDConnect.db.Service;
+                else if (DiscountCb.Tag.ToString() == "2")
+                    filterServices = filterServices.Where(x => x.Discount >= 0 && x.Discount < 5);
+                else if (DiscountCb.Tag.ToString() == "3")
+                    filterServices = filterServices.Where(x => x.Discount >= 5 && x.Discount < 15);
+                else if (DiscountCb.Tag.ToString() == "4")
+                    filterServices = filterServices.Where(x => x.Discount >= 15 && x.Discount < 30);
+                else if (DiscountCb.Tag.ToString() == "5")
+                    filterServices = filterServices.Where(x => x.Discount >= 30 && x.Discount < 70);
+                else if (DiscountCb.Tag.ToString() == "6")
+                    filterServices = filterServices.Where(x => x.Discount >= 70 && x.Discount < 100);
+            }
 
-            if(string.IsNullOrWhiteSpace(NameDisSearchTb.Text)) 
-                filterServices = filterServices.Where(x => x.Title.StartsWith(NameDisSearchTb.Text) || x.Description.StartsWith(NameDisSearchTb.Text));
+
+            if (NameDisSearchTb.Text.Length > 0 ) 
+                filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text));
 
             ServiceList.ItemsSource = filterServices.ToList();
         }
