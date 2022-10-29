@@ -13,7 +13,7 @@
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock>Логин</TextBlock>
-                <TextBox x:Name="LoginTb" ></TextBox>
+                <TextBox x:Name="LoginTb"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock>Пароль</TextBlock>

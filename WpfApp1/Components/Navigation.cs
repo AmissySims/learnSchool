@@ -31,7 +31,7 @@ namespace WpfApp1.Components
         }
         private static void Update(Nav nav)
         {
-            main.TitalePage.Text = nav.Title;
+            main.TitlePage.Text = nav.Title;
             main.BackBtn.Visibility = navs.Count > 1 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
             main.ExitBtn.Visibility = isAuth == true ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
             main.MyFrame.Navigate(nav.Page);

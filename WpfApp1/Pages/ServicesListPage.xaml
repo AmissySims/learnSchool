@@ -9,7 +9,15 @@
       Title="ServicesListPage">
 
     <Grid>
-        <ListView x:Name="ServiceList">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5">Сортировка</TextBlock>
+                <ComboBox Width="150" x:Name="SortCb" SelectionChanged="SortCb_SelectionChanged">
+                    <ComboBoxItem Tag="1">По возрастанию</ComboBoxItem>
+                    <ComboBoxItem Tag="2">По убыванию</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <ListView Height="300" x:Name="ServiceList" BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -28,18 +36,21 @@
                                 <MultiBinding StringFormat="{}{0:F0} рублей за {1}">
                                     <Binding Path="Cost"></Binding>
                                     <Binding Path="DurationInSeconds"></Binding>
+                                        <Binding Path="Discount"></Binding>
                                 </MultiBinding>
                                 
                             </TextBlock.Text>
                         </TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Button x:Name="CreateBtn">Редактировать</Button>
-                            <Button x:Name="DeleteBtn">Удалить</Button>
+                            
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
+                            <Button x:Name="CreateBtn" Height="25" Margin="4">Редактировать</Button>
+                            <Button x:Name="DeleteBtn" Height="25" Margin="4">Удалить</Button>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
                 
             </ListView.ItemTemplate>
         </ListView>
+        </StackPanel>
     </Grid>
 </Page>

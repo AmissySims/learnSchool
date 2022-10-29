@@ -26,5 +26,28 @@ namespace WpfApp1.Pages
             InitializeComponent();
             ServiceList.ItemsSource = BDConnect.db.Service.ToList();
         }
+        private void CreateBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void Refresh()
+        {
+           IEnumerable<Service> filterServices = BDConnect.db.Service;
+            if(SortCb.Text == "По возрастанию")
+            {
+                filterServices = filterServices.OrderByDescending(x => x.Cost);
+            }
+            else if (SortCb.Text == "По убыванию")
+            {
+                filterServices = filterServices.OrderBy(x => x.Cost);
+            }
+
+            ServiceList.ItemsSource = filterServices.ToList();
+        }
+
+        private void SortCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

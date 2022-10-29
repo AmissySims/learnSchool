@@ -15,7 +15,7 @@
         <Rectangle  Fill="#FF30A0FF"></Rectangle>
         <Image Source="/Resources/school_logo.png" HorizontalAlignment="Left"></Image>
         <!-- вставляется после texrblok Style="{StaticResource MyStule}"--> 
-        <TextBlock  x:Name="TitalePage">Школа языков "Learn"</TextBlock>
+        <TextBlock  x:Name="TitlePage">Школа языков "Learn"</TextBlock>
         <Rectangle Grid.Row="2" Fill="#FF30A0FF"></Rectangle>
         <Button  x:Name="BackBtn" Style="{StaticResource MyButton }" HorizontalAlignment="Right" Margin="110 0 " Click="BackBtn_Click" >Назад</Button>
         <Button x:Name="ExitBtn"  Style="{StaticResource NewMyButton }" HorizontalAlignment="Right" Margin="10 0 " Click="ExitBtn_Click">Выход</Button>
