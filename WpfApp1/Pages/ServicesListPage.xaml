@@ -28,9 +28,11 @@
                 <TextBlock Margin="5">Название или описание</TextBlock>
                 <TextBox Width="150" x:Name="NameDisSearchTb" TextChanged="NameDisSearchTb_TextChanged"></TextBox>
             </StackPanel>
+            
             <ListView Height="300" x:Name="ServiceList" BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
+                   <Border BorderBrush="Black">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -57,11 +59,27 @@
                             <Button x:Name="CreateBtn" Height="25" Margin="4">Редактировать</Button>
                             <Button x:Name="DeleteBtn" Height="25" Margin="4">Удалить</Button>
                         </StackPanel>
+
+                            <ListView ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Client.FirstName}" Background="LightBlue"></TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                
+                            </ListView>
+                        
                     </Grid>
-                </DataTemplate>
+                </Border>
+
+                    </DataTemplate>
                 
             </ListView.ItemTemplate>
         </ListView>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="a"></TextBlock>
+                <TextBlock x:Name="b"></TextBlock>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
