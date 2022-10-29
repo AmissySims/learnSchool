@@ -42,8 +42,8 @@ namespace WpfApp1.Pages
             }
             else
             {
-                var AuthUser = BDConnect.db.User.ToList().Find(x => x.Login == login && x.Password == password);
-                if(AuthUser == null)
+                var AuthClient = BDConnect.db.User.ToList().Find(x => x.Login == login && x.Password == password);
+                if(AuthClient == null)
                 {
                     MessageBox.Show("Такого пользователя не существует");
                 }
