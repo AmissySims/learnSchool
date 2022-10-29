@@ -16,6 +16,17 @@
                     <ComboBoxItem Tag="1">По возрастанию</ComboBoxItem>
                     <ComboBoxItem Tag="2">По убыванию</ComboBoxItem>
                 </ComboBox>
+                <TextBlock Margin="5">Размер скидки</TextBlock>
+                <ComboBox Height="30" Width="150" x:Name="DiscountSortCb">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>от 0 до 5%</ComboBoxItem>
+                    <ComboBoxItem>от 55 до 15%</ComboBoxItem>
+                    <ComboBoxItem>от 15% до 30%</ComboBoxItem>
+                    <ComboBoxItem>от 30% до 70%</ComboBoxItem>
+                    <ComboBoxItem>от 70% до 100%</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin="5">Название или описание</TextBlock>
+                <TextBox Width="150" x:Name="NameD"></TextBox>
             </StackPanel>
             <ListView Height="300" x:Name="ServiceList" BorderBrush="Black">
             <ListView.ItemTemplate>
