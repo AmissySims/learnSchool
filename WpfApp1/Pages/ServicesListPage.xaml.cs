@@ -43,7 +43,9 @@ namespace WpfApp1.Pages
             }
 
             var DiscountCb = DiscountSortCb.SelectedItem as ComboBoxItem;
-            if (DiscountCb.Tag.ToString() == "2")
+            if (DiscountCb.Tag.ToString() == "1")
+                filterServices = filterServices.ToList();
+            else if (DiscountCb.Tag.ToString() == "2")
                 filterServices = filterServices.Where(x => x.Discount >= 0 && x.Discount < 5);
             else if (DiscountCb.Tag.ToString() == "3")
                 filterServices = filterServices.Where(x => x.Discount >= 5 && x.Discount < 15);
@@ -54,7 +56,7 @@ namespace WpfApp1.Pages
             else if (DiscountCb.Tag.ToString() == "6")
                 filterServices = filterServices.Where(x => x.Discount >= 70 && x.Discount < 100);
 
-            if(NameDisSearchTb.Text.Length > 0) 
+            if(string.IsNullOrWhiteSpace(NameDisSearchTb.Text)) 
                 filterServices = filterServices.Where(x => x.Title.StartsWith(NameDisSearchTb.Text) || x.Description.StartsWith(NameDisSearchTb.Text));
 
             ServiceList.ItemsSource = filterServices.ToList();
