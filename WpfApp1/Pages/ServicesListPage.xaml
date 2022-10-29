@@ -26,7 +26,7 @@
                     <ComboBoxItem Tag="6">от 70% до 100%</ComboBoxItem>
                 </ComboBox>
                 <TextBlock Margin="5">Название или описание</TextBlock>
-                <TextBox Width="150" x:Name="NameDisSearchTb"></TextBox>
+                <TextBox Width="150" x:Name="NameDisSearchTb" TextChanged="NameDisSearchTb_TextChanged"></TextBox>
             </StackPanel>
             <ListView Height="300" x:Name="ServiceList" BorderBrush="Black">
             <ListView.ItemTemplate>

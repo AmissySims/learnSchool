@@ -54,8 +54,12 @@ namespace WpfApp1.Pages
             else if (DiscountCb.Tag.ToString() == "6")
                 filterServices = filterServices.Where(x => x.Discount >= 70 && x.Discount < 100);
 
+            if(NameDisSearchTb.Text.Length > 0) 
+                filterServices = filterServices.Where(x => x.Title.StartsWith(NameDisSearchTb.Text) || x.Description.StartsWith(NameDisSearchTb.Text));
+
             ServiceList.ItemsSource = filterServices.ToList();
         }
+
 
         private void SortCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -63,6 +67,11 @@ namespace WpfApp1.Pages
         }
 
         private void DiscountSortCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void NameDisSearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             Refresh();
         }
