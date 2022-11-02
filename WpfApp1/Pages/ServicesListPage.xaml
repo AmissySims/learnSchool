@@ -29,23 +29,24 @@
                 <TextBox Width="150" x:Name="NameDisSearchTb" TextChanged="NameDisSearchTb_TextChanged"></TextBox>
             </StackPanel>
             
-            <ListView Height="300" x:Name="ServiceList" BorderBrush="Black" >
+            <ListView Height="350" x:Name="ServiceList" BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                   <Border BorderBrush="Black" Padding="5" Margin="5">
+                   <Border BorderBrush="LightBlue" Padding="5" Margin="5" Background="{Binding ColorDis}" BorderThickness="2">
                        
-                    <Grid>
+                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="700"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"></RowDefinition>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition Height="100"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
-                        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  >
+                        <Image Source="{Binding MainImagePath}" Grid.RowSpan="3" Height="100"></Image>
+                         <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
+                                <!--<TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  >
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0:F0} рублей за {1}">
                                     <Binding Path="Cost"></Binding>
@@ -54,11 +55,22 @@
                                 </MultiBinding>
                                 
                             </TextBlock.Text>
-                        </TextBlock>
-                            
-                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
-                            <Button x:Name="CreateBtn" Height="25" Margin="4">Редактировать</Button>
-                            <Button x:Name="DeleteBtn" Height="25" Margin="4">Удалить</Button>
+                        </TextBlock> -->
+
+                                <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Cost, StringFormat=F}" Visibility="{Binding DiscountVisability}" TextDecorations="Strikethrough"></TextBlock>
+                                        <TextBlock Text="{Binding CostDuration}"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding StrDiscont}" HorizontalAlignment="Left"></TextBlock>
+                                </StackPanel>
+                        
+                        
+                        
+                        
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                            <Button x:Name="CreateBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Редактировать</Button>
+                            <Button x:Name="DeleteBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Удалить</Button>
                         </StackPanel>
 
                             <ListView BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3" Style="{StaticResource HorizontalList}">
@@ -70,16 +82,17 @@
                                 
                             </ListView>
                         
-                    </Grid>
-                </Border>
+                     </Grid>
+                   </Border>
 
-                    </DataTemplate>
+                </DataTemplate>
                 
             </ListView.ItemTemplate>
         </ListView>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock x:Name="a"></TextBlock>
-                <TextBlock x:Name="b"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
+                <Button Margin="750 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Style="{StaticResource MyButton}" >Добавить</Button>
+                <TextBlock x:Name="FoundCount"></TextBlock>
+                <TextBlock x:Name="GeneralCount"></TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

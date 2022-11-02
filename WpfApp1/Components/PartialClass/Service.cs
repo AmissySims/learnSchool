@@ -50,5 +50,6 @@ namespace WpfApp1.Components
                     return "#D1FFD1";
             }
         }
+
     }
 }

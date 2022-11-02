@@ -25,6 +25,7 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
             ServiceList.ItemsSource = BDConnect.db.Service.ToList();
+            GeneralCount.Text = BDConnect.db.Service.Count().ToString();
         }
         private void CreateBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -64,6 +65,7 @@ namespace WpfApp1.Pages
                 filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text));
 
             ServiceList.ItemsSource = filterServices.ToList();
+            FoundCount.Text = filterServices.Count.ToString() + " из ";
         }
 
 
@@ -80,6 +82,11 @@ namespace WpfApp1.Pages
         private void NameDisSearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             Refresh();
+        }
+
+        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
