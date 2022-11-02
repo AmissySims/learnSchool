@@ -105,6 +105,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Components\Navigation.cs" />
+    <Compile Include="Components\PartialClass\Service.cs" />
     <Compile Include="Components\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

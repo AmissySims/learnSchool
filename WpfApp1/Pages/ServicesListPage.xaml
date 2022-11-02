@@ -29,10 +29,11 @@
                 <TextBox Width="150" x:Name="NameDisSearchTb" TextChanged="NameDisSearchTb_TextChanged"></TextBox>
             </StackPanel>
             
-            <ListView Height="300" x:Name="ServiceList" BorderBrush="Black">
+            <ListView Height="300" x:Name="ServiceList" BorderBrush="Black" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                   <Border BorderBrush="Black">
+                   <Border BorderBrush="Black" Padding="5" Margin="5">
+                       
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -60,7 +61,7 @@
                             <Button x:Name="DeleteBtn" Height="25" Margin="4">Удалить</Button>
                         </StackPanel>
 
-                            <ListView ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3">
+                            <ListView BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3" Style="{StaticResource HorizontalList}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Client.FirstName}" Background="LightBlue"></TextBlock>

@@ -51,5 +51,15 @@
             <Setter Property="VerticalAlignment" Value="Center" ></Setter>
 
         </Style>
+
+        <Style TargetType="ListView" x:Key="HorizontalList">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
