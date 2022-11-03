@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Components;
 
 namespace WpfApp1.Pages
 {
@@ -20,9 +21,12 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AddEditServicePage : Page
     {
-        public AddEditServicePage()
+        Service service;
+        public AddEditServicePage(Service _service)
         {
             InitializeComponent();
+            service = _service;
+            DataContext = service;
         }
     }
 }

@@ -91,7 +91,7 @@ namespace WpfApp1.Pages
 
         private void AddServiceBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.NextPage(new Nav("Добавление услуги", new AddEditServicePage(new Service())));
         }
     }
 }
