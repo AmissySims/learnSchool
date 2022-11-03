@@ -31,12 +31,13 @@
                     <TextBlock>Скидка</TextBlock>
                     <TextBox Text="{Binding Discount}"></TextBox>
                 </StackPanel>
-                <Button Style="{StaticResource MyButton}">Сохранить</Button>
+                <Button Style="{StaticResource MyButton}" x:Name="SaveBtn" Click="SaveBtn_Click">Сохранить</Button>
             
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="{Binding MainImagePath}" Width="200" Height="200"></Image>
-                <Button Style="{StaticResource MyButton}">Добавить изображение</Button>
+                <Button Style="{StaticResource MyButton}" x:Name="AddImagePage">Добавить изображение</Button>
+                
             </StackPanel>
         </StackPanel>
     </Grid>
