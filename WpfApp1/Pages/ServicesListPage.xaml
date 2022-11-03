@@ -90,7 +90,7 @@
             </ListView.ItemTemplate>
         </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
-                <Button Margin="750 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Style="{StaticResource MyButton}" >Добавить</Button>
+                <Button Margin="760 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Content="Добавить" Style="{StaticResource MyButton}" Click="AddServiceBtn_Click"></Button>
                 <TextBlock x:Name="FoundCount"></TextBlock>
                 <TextBlock x:Name="GeneralCount"></TextBlock>
             </StackPanel>

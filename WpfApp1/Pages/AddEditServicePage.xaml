@@ -35,7 +35,7 @@
             
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Width="200" Height="200"></Image>
+                <Image Source="{Binding MainImagePath}" Width="200" Height="200"></Image>
                 <Button Style="{StaticResource MyButton}">Добавить изображение</Button>
             </StackPanel>
         </StackPanel>

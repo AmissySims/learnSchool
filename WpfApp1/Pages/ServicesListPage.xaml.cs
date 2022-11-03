@@ -88,5 +88,10 @@ namespace WpfApp1.Pages
         {
 
         }
+
+        private void AddServiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
