@@ -13,23 +13,23 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Название</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox Text="{Binding Title}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Цена</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox Text="{Binding Cost}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Время выолнения</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox Text="{Binding DurationInSeconds}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Описание</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox Text="{Binding Description}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Скидка</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox Text="{Binding Discount}"></TextBox>
                 </StackPanel>
                 <Button Style="{StaticResource MyButton}">Сохранить</Button>
             

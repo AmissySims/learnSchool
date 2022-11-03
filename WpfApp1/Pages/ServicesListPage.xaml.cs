@@ -65,7 +65,7 @@ namespace WpfApp1.Pages
                 filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text));
 
             ServiceList.ItemsSource = filterServices.ToList();
-            FoundCount.Text = filterServices.Count.ToString() + " из ";
+            FoundCount.Text = filterServices.Count().ToString() + " из ";
         }
 
 
