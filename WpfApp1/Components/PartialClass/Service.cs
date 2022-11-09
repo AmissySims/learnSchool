@@ -9,6 +9,16 @@ namespace WpfApp1.Components
 {
     public partial class Service
     {
+        public Visibility BtnVisible
+        {
+            get
+            {
+                if(Navigation.AuthUser.RoleId == 2) //Client
+                    return Visibility.Collapsed;
+                else
+                    return Visibility.Visible;
+            }
+        }
         public string StrDiscount
         {
             get

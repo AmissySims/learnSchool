@@ -25,7 +25,8 @@ namespace WpfApp1.Pages
         public ServicesListPage()
         {
             InitializeComponent();
-            
+            if(Navigation.AuthUser.RoleId == 2)
+                AddServiceBtn.Visibility = Visibility.Collapsed;
             ServiceList.ItemsSource = BDConnect.db.Service.Where(x=> x.IsDelete != true).ToList();
             GeneralCount.Text = BDConnect.db.Service.Count().ToString();
         }

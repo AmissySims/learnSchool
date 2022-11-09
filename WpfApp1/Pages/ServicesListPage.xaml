@@ -69,7 +69,7 @@
                         
                         
                         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                            <Button x:Name="CreateBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Редактировать</Button>
+                            <Button x:Name="CreateBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" Visibility="{Binding BtnVisible}">Редактировать</Button>
                             <Button x:Name="DeleteBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Удалить</Button>
                         </StackPanel>
 
