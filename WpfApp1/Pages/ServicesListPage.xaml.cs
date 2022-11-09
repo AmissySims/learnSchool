@@ -25,6 +25,7 @@ namespace WpfApp1.Pages
         public ServicesListPage()
         {
             InitializeComponent();
+            
             ServiceList.ItemsSource = BDConnect.db.Service.Where(x=> x.IsDelete != true).ToList();
             GeneralCount.Text = BDConnect.db.Service.Count().ToString();
         }
