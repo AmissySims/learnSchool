@@ -42,7 +42,7 @@ namespace WpfApp1.Pages
             }
             else
             {
-                var AuthUser = BDConnect.db.User.ToList().Find(x => x.Login == login && x.Password == password);
+                Navigation.AuthUser = BDConnect.db.User.ToList().Find(x => x.Login == login && x.Password == password);
                 if(Navigation.AuthUser == null)
                 {
                     MessageBox.Show("Такого пользователя не существует");
