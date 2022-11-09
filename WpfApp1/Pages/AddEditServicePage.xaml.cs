@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,12 +32,19 @@ namespace WpfApp1.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            //if (service.ID == 0)
+            //{
+            //    BDConnect.db.Service.Add(service);
+            //}
+            //BDConnect.db.SaveChanges();
+            //MessageBox.Show("Успешно выполнено!");
+            service.DurationInSeconds *= 60;
             if (service.ID == 0)
-            {
                 BDConnect.db.Service.Add(service);
-            }
             BDConnect.db.SaveChanges();
             MessageBox.Show("Успешно выполнено!");
+            Navigation.NextPage(new Nav("Список услуг", new ServicesListPage()));
         }
     }
-}
+    }
+

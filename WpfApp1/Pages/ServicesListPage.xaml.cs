@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,12 +34,12 @@ namespace WpfApp1.Pages
         }
         private void Refresh()
         {
-           IEnumerable<Service> filterServices = BDConnect.db.Service;
+            IEnumerable<Service> filterServices = BDConnect.db.Service;
             if (SortCb.Text == "По возрастанию")
             {
-                filterServices = filterServices.OrderByDescending(x => x.Cost); 
+                filterServices = filterServices.OrderByDescending(x => x.Cost);
             }
-            else 
+            else
             {
                 filterServices = filterServices.OrderBy(x => x.Cost); //по убыванию
             }
@@ -61,7 +62,7 @@ namespace WpfApp1.Pages
             }
 
 
-            if (NameDisSearchTb.Text.Length > 0 ) 
+            if (NameDisSearchTb.Text.Length > 0)
                 filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text));
 
             ServiceList.ItemsSource = filterServices.ToList();
@@ -84,14 +85,29 @@ namespace WpfApp1.Pages
             Refresh();
         }
 
-        private void CreateBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void AddServiceBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new Nav("Добавление услуги", new AddEditServicePage(new Service())));
+        }
+        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selService = (sender as Button).DataContext as Service;
+            Navigation.NextPage(new Nav("Редактирование услуги", new AddEditServicePage(selService)));
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selService = (sender as Button).DataContext as Service;
+            if (MessageBox.Show("Вы точно хотите удалить эту запись!", "Уведомления", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                selService.IsDelete = true;
+
+                MessageBox.Show("Запись удалена");
+                BDConnect.db.SaveChanges();
+                ServiceList.ItemsSource = BDConnect.db.Service.ToList();
+
+            }
         }
     }
 }
