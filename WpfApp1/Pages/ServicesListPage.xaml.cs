@@ -22,6 +22,7 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class ServicesListPage : Page
     {
+        int actualPage = 0;
         public ServicesListPage()
         {
             InitializeComponent();
@@ -65,7 +66,13 @@ namespace WpfApp1.Pages
 
 
             if (NameDisSearchTb.Text.Length > 0)
-                filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text));
+                filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()));
+
+            if(CountCb.SelectedIndex > 0 && filterServices.Count()> 0)
+            {
+                var selCount = (CountCb.SelectedItem as ComboBoxItem).Content;
+            }
+
 
             ServiceList.ItemsSource = filterServices.ToList();
             FoundCount.Text = filterServices.Count().ToString() + " из ";
