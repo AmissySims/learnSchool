@@ -46,5 +46,5 @@ namespace WpfApp1.Pages
             Navigation.NextPage(new Nav("Список услуг", new ServicesListPage()));
         }
     }
-    }
+}
 
