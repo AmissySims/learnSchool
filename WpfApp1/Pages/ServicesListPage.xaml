@@ -101,11 +101,11 @@
                 <!--</StackPanel>-->
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
-                <Button x:Name="LeftBtn" Content="&lt;" Margin="10 0" Width="30"></Button>
+                <Button x:Name="LeftBtn" Content="&lt;" Margin="10 0" Width="30" Click="LeftBtn_Click"></Button>
                     <Button Margin="0 0 630 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Content="Добавить" Style="{StaticResource MyButton}" Click="AddServiceBtn_Click"></Button>
                     <TextBlock x:Name="FoundCount"></TextBlock>
                 <TextBlock x:Name="GeneralCount"></TextBlock>
-                <Button x:Name="RightBtn" Content="&gt;" Margin="10 0" Width="30"></Button>
+                <Button x:Name="RightBtn" Content="&gt;" Margin="10 0" Width="30" Click="RightBtn_Click"></Button>
             </StackPanel>
             <!--</Grid>-->
         </StackPanel>

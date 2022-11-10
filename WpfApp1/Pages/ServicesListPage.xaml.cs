@@ -68,11 +68,15 @@ namespace WpfApp1.Pages
             if (NameDisSearchTb.Text.Length > 0)
                 filterServices = filterServices.Where(x => x.Title.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()) || x.Description.ToLower().StartsWith(NameDisSearchTb.Text.ToLower()));
 
-            if(CountCb.SelectedIndex > 0 && filterServices.Count() > 0)
+            if(CountCb.SelectedIndex > -1 && filterServices.Count() > 0)
             {
-                int selCount = (int)(CountCb.SelectedItem as ComboBoxItem).Content;
+                int selCount = Convert.ToInt32((CountCb.SelectedItem as ComboBoxItem).Content);
                 filterServices = filterServices.Skip(selCount * actualPage).Take(selCount);
-
+                if(filterServices.Count() == 0)
+                {
+                    actualPage--;
+                    Refresh();
+                }
             }
 
 
@@ -120,5 +124,28 @@ namespace WpfApp1.Pages
 
             }
         }
+
+        private void LeftBtn_Click(object sender, RoutedEventArgs e)
+        {
+            actualPage--;
+            if(actualPage < 0)
+                actualPage = 0;
+            Refresh();
+
+        }
+
+        private void RightBtn_Click(object sender, RoutedEventArgs e)
+        {
+            actualPage++;
+            Refresh();
+        }
+
+        private void CountCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            actualPage = 0;
+            Refresh();
+        }
+
+ 
     }
 }
