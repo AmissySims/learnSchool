@@ -11,6 +11,12 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="CountCb" Height="30">
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                </ComboBox>
                 <TextBlock Margin="5">Сортировка</TextBlock>
                 <ComboBox Width="150" x:Name="SortCb" SelectionChanged="SortCb_SelectionChanged">
                     <ComboBoxItem Tag="1">По возрастанию</ComboBoxItem>
@@ -89,11 +95,19 @@
                 
             </ListView.ItemTemplate>
         </ListView>
+            <!--<Grid Grid.Row="1">
+                <StackPanel HorizontalAlignment="Left" Margin="5 0">
+                <Button Margi--><!--n="760 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Content="Добавить" Style="{StaticResource MyButton}" Click="AddServiceBtn_Click"></Button>-->
+                <!--</StackPanel>-->
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
-                <Button Margin="760 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Content="Добавить" Style="{StaticResource MyButton}" Click="AddServiceBtn_Click"></Button>
-                <TextBlock x:Name="FoundCount"></TextBlock>
+                <Button x:Name="LeftBtn" Content="&lt;" Margin="10 0" Width="30"></Button>
+                    <Button Margin="0 0 630 0" x:Name="AddServiceBtn" HorizontalAlignment="Left" Content="Добавить" Style="{StaticResource MyButton}" Click="AddServiceBtn_Click"></Button>
+                    <TextBlock x:Name="FoundCount"></TextBlock>
                 <TextBlock x:Name="GeneralCount"></TextBlock>
+                <Button x:Name="RightBtn" Content="&gt;" Margin="10 0" Width="30"></Button>
             </StackPanel>
+            <!--</Grid>-->
         </StackPanel>
     </Grid>
 </Page>
