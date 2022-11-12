@@ -19,8 +19,9 @@
                 </ComboBox>
                 <TextBlock Margin="5">Сортировка</TextBlock>
                 <ComboBox Width="150" x:Name="SortCb" SelectionChanged="SortCb_SelectionChanged">
-                    <ComboBoxItem Tag="1">По возрастанию</ComboBoxItem>
-                    <ComboBoxItem Tag="2">По убыванию</ComboBoxItem>
+                    <ComboBoxItem >По умолчанию</ComboBoxItem>
+                    <ComboBoxItem >По возрастанию</ComboBoxItem>
+                    <ComboBoxItem >По убыванию</ComboBoxItem>
                 </ComboBox>
                 <TextBlock Margin="5">Размер скидки</TextBlock>
                 <ComboBox Height="30" Width="150" x:Name="DiscountSortCb" SelectionChanged="DiscountSortCb_SelectionChanged">

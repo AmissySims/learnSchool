@@ -9,6 +9,17 @@ namespace WpfApp1.Components
 {
     public partial class Service
     {
+        public decimal CostDiscount
+        {
+            get
+            {
+                if (Discount == 0 || Discount == null)
+                    return Cost;
+                else
+                    return Cost - (decimal)Cost * (decimal)Discount/100;
+            }
+        }
+    
         public Visibility BtnVisible
         {
             get

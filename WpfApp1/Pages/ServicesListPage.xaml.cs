@@ -38,14 +38,14 @@ namespace WpfApp1.Pages
         private void Refresh()
         {
             IEnumerable<Service> filterServices = BDConnect.db.Service.Where(x => x.IsDelete != true);
-            if (SortCb.Text == "По возрастанию")
+            if(SortCb.SelectedIndex > 0)
             {
-                filterServices = filterServices.OrderByDescending(x => x.Cost);
+                if (SortCb.SelectedIndex == 1)
+                    filterServices = filterServices.OrderBy(x => x.CostDiscount);
+                else
+                    filterServices = filterServices.OrderByDescending(x => x.CostDiscount);
             }
-            else
-            {
-                filterServices = filterServices.OrderBy(x => x.Cost); //по убыванию
-            }
+          
 
             var DiscountCb = DiscountSortCb.SelectedItem as ComboBoxItem;
             if (DiscountCb != null)
@@ -53,7 +53,7 @@ namespace WpfApp1.Pages
                 if (DiscountCb.Tag.ToString() == "1")
                     filterServices = BDConnect.db.Service;
                 else if (DiscountCb.Tag.ToString() == "2")
-                    filterServices = filterServices.Where(x => x.Discount >= 0 && x.Discount < 5);
+                    filterServices = filterServices.Where(x => (x.Discount >= 0 && x.Discount < 5) || x.Discount == null);
                 else if (DiscountCb.Tag.ToString() == "3")
                     filterServices = filterServices.Where(x => x.Discount >= 5 && x.Discount < 15);
                 else if (DiscountCb.Tag.ToString() == "4")
