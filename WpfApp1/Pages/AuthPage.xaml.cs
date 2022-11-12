@@ -24,6 +24,11 @@ namespace WpfApp1.Pages
         public AuthPage()
         {
             InitializeComponent();
+            if(Properties.Settings.Default.Login != null)
+                LoginTb.Text = Properties.Settings.Default.Login;   
+            if(Properties.Settings.Default.Password != null)
+                PasswordTb.Text = Properties.Settings.Default.Password; 
+            
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
@@ -49,6 +54,18 @@ namespace WpfApp1.Pages
                 }
                 else
                 {
+                    if(SaveCb.IsChecked != null)
+                    {
+                        Properties.Settings.Default.Login = LoginTb.Text; 
+                        Properties.Settings.Default.Password = PasswordTb.Text;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Login = null;
+                        Properties.Settings.Default.Password = null;
+                        Properties.Settings.Default.Save();
+                    }
                     Navigation.isAuth = true;
                     Navigation.NextPage(new Nav("Список услуг", new ServicesListPage()));
                    
