@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Components;
+using Microsoft.Win32;
+using System.IO;
 
 namespace WpfApp1.Pages
 {
@@ -27,6 +29,7 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
             service = _service;
+            service.DurationInSeconds /= 60;
             DataContext = service;
         }
 
@@ -44,6 +47,19 @@ namespace WpfApp1.Pages
             BDConnect.db.SaveChanges();
             MessageBox.Show("Успешно выполнено!");
             Navigation.NextPage(new Nav("Список услуг", new ServicesListPage()));
+        }
+
+        private void AddImagePage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpeg|*.jpg|*.jpg"
+            };
+            if(openFile.ShowDialog().GetValueOrDefault())
+            {
+                service.MainImagePath = File.ReadAllBytes(openFile.FileName);
+                ServiceImage.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WpfApp1.Components
         public Client()
         {
             this.ClientService = new HashSet<ClientService>();
+            this.User = new HashSet<User>();
             this.Tag = new HashSet<Tag>();
         }
     
@@ -31,12 +32,12 @@ namespace WpfApp1.Components
         public string Phone { get; set; }
         public string GenderCode { get; set; }
         public string PhotoPath { get; set; }
-        public Nullable<int> UserId { get; set; }
     
         public virtual Gender Gender { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tag> Tag { get; set; }
     }

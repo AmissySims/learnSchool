@@ -35,8 +35,8 @@
             
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Source="{Binding MainImagePath}" Width="200" Height="200"></Image>
-                <Button Style="{StaticResource MyButton}" x:Name="AddImagePage">Добавить изображение</Button>
+                <Image x:Name="ServiceImage" Source="{Binding MainImagePath}" Width="200" Height="200"></Image>
+                <Button Style="{StaticResource MyButton}" x:Name="AddImagePage" Click="AddImagePage_Click">Добавить изображение</Button>
                 
             </StackPanel>
         </StackPanel>
