@@ -53,7 +53,7 @@ namespace WpfApp1.Pages
         {
             OpenFileDialog openFile = new OpenFileDialog()
             {
-                Filter = "*.png|*.png|*.jpeg|*.jpg|*.jpg"
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg",
             };
             if(openFile.ShowDialog().GetValueOrDefault())
             {
