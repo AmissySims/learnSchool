@@ -148,7 +148,7 @@ namespace WpfApp1.Pages
 
         private void OrderServiceBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.NextPage(new Nav("Заказ услуги", new OrderServicePage()));
         }
     }
 }
