@@ -146,6 +146,9 @@ namespace WpfApp1.Pages
             Refresh();
         }
 
- 
+        private void OrderServiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
