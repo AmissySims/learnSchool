@@ -23,6 +23,7 @@ namespace WpfApp1.Pages
         public OrderServicePage()
         {
             InitializeComponent();
+            OrderList.ItemsSource
         }
     }
 }

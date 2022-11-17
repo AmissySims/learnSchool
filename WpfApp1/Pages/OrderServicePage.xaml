@@ -9,6 +9,47 @@
       Title="OrderServicePage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock>Наименование</TextBlock>
+                <ComboBox x:Name="TitleCb" Width="450" Margin="5"></ComboBox>
+            </StackPanel>
+        <ListView Grid.Row="1" x:Name="OrderList">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Service.Title}" Width="450" Header="Наименование"></GridViewColumn>
+                        <GridViewColumn Width="250" Header="Дата">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding StartTime}"></DatePicker>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+            <!--<StackPanel Orientation="Horizontal">
+                <TextBlock>Услуга</TextBlock>
+                <TextBox x:Name="tr"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Услуга</TextBlock>
+                <TextBox x:Name="rt"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Услуга</TextBlock>
+                <TextBox x:Name="o"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5" x:Name="fd" Style="{StaticResource MyButton}">Оформить</Button>
+
+            </StackPanel>-->
+      
     </Grid>
 </Page>
