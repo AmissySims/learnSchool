@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Components;
 
 namespace WpfApp1.Pages
 {
@@ -23,7 +24,7 @@ namespace WpfApp1.Pages
         public OrderServicePage()
         {
             InitializeComponent();
-            OrderList.ItemsSource
+            OrderList.ItemsSource = BDConnect.db.ClientService.Where(x => x.ClientID == Navigation.AuthUser.ClientID).ToList();
         }
     }
 }

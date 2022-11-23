@@ -37,8 +37,9 @@ namespace WpfApp1.Components
             main.MyFrame.Navigate(nav.Page);
         }
     }
-    class Nav { 
-    public string Title { get; set; }
+    class Nav
+    { 
+        public string Title { get; set; }
         public Page Page { get; set; }
         public Nav(string Title, Page Page)
         {
