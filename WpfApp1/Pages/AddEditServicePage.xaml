@@ -9,7 +9,9 @@
       Title="AddEditServicePage">
 
     <Grid>
+        <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
+
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock>Название</TextBlock>
@@ -38,6 +40,27 @@
                 <Image x:Name="ServiceImage" Source="{Binding MainImagePath}" Width="200" Height="200"></Image>
                 <Button Style="{StaticResource MyButton}" x:Name="AddImagePage" Click="AddImagePage_Click">Добавить изображение</Button>
                 
+            </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button FontSize="50" x:Name="LeftBtn" Content="&lt;" Click="LeftBtn_Click"></Button>
+                <ListView x:Name="ExcessImage" Width="500" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Margin="5 0 0 0 " Width="150" Height="110" Source="{Binding PhotoPath}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button FontSize="50" x:Name="RightBtn" Content="&gt;" Click="RightBtn_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MyButton}" x:Name="AddAddBtn" Click="AddAddBtn_Click">Добавить дополнительное изображение</Button>
+                <Button Style="{StaticResource MyButton}" x:Name="ClearAddBtn" Click="ClearAddBtn_Click">Удалить дополнительное изображение</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

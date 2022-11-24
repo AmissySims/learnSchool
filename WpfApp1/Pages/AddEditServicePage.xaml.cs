@@ -60,6 +60,36 @@ namespace WpfApp1.Pages
                 service.MainImagePath = File.ReadAllBytes(openFile.FileName);
                 ServiceImage.Source = new BitmapImage(new Uri(openFile.FileName));
             }
+            
+        }
+        int p = 2;
+
+        private void LeftBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg",
+            };
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                service.MainImagePath = File.ReadAllBytes(openFile.FileName);
+                ServiceImage.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
+        }
+
+        private void ClearAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
