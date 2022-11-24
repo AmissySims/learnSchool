@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using WpfApp1.Components;
 using Microsoft.Win32;
 using System.IO;
+using System.Data.Common;
 
 namespace WpfApp1.Pages
 {
@@ -62,15 +63,35 @@ namespace WpfApp1.Pages
             }
             
         }
-        int p = 2;
+        int p = 1;
+        int k = 3;
+        int max = 0;
+         private void Update()
+        {
+            var lpr = BDConnect.db.ServicePhoto.ToList();
+            if (lpr.Count() % 2 == 0)
+                max = lpr.Count / k;
+            else max = (lpr.Count() + 1) / k;
+
+            ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList().Where(x => x.ServiceID == service.ID);
+        }
 
         private void LeftBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (p >= 0)
+            {
+                p--;
+                Update();
+            }
         }
 
         private void RightBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(p <= max - 1)
+            {
+                p++;
+                Update();
+            }
 
         }
 
