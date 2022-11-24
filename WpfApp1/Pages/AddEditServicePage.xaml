@@ -52,7 +52,7 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Image Margin="5 0 0 0 " Width="150" Height="110" Source="{Binding PhotoPath}"/>
+                            <Image x:Name="DopImage" Margin="5 0 0 0 " Width="150" Height="110" Source="{Binding PhotoPath}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
