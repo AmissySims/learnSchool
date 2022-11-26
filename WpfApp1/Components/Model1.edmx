@@ -117,7 +117,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceID" Type="int" Nullable="false" />
-          <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoPath" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -486,15 +486,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
-        <EntityType Name="ServicePhoto">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ServiceID" Type="Int32" Nullable="false" />
-          <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Service" Relationship="Service1Model.FK_ServicePhoto_Service" FromRole="ServicePhoto" ToRole="Service" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -570,7 +561,6 @@
           <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" />
           <EntitySet Name="ProductSale" EntityType="Self.ProductSale" />
           <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="ServicePhoto" EntityType="Self.ServicePhoto" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tag" EntityType="Self.Tag" />
           <EntitySet Name="User" EntityType="Self.User" />
@@ -625,6 +615,7 @@
             <End Role="Service" EntitySet="Service" />
             <End Role="ClientService" EntitySet="ClientService" />
           </AssociationSet>
+          <EntitySet Name="ServicePhoto" EntityType="Service1Model.ServicePhoto" />
           <AssociationSet Name="FK_ServicePhoto_Service" Association="Service1Model.FK_ServicePhoto_Service">
             <End Role="Service" EntitySet="Service" />
             <End Role="ServicePhoto" EntitySet="ServicePhoto" />
@@ -773,6 +764,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ServicePhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Service" Relationship="Service1Model.FK_ServicePhoto_Service" FromRole="ServicePhoto" ToRole="Service" />
+        </EntityType>
         <Association Name="FK_ServicePhoto_Service">
           <End Type="Service1Model.Service" Role="Service" Multiplicity="1" />
           <End Type="Service1Model.ServicePhoto" Role="ServicePhoto" Multiplicity="*" />
@@ -853,15 +853,6 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServicePhoto">
-            <EntityTypeMapping TypeName="Service1Model.ServicePhoto">
-              <MappingFragment StoreEntitySet="ServicePhoto">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -951,6 +942,15 @@
                 <ScalarProperty Name="DurationInSeconds" ColumnName="DurationInSeconds" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicePhoto">
+            <EntityTypeMapping TypeName="Service1Model.ServicePhoto">
+              <MappingFragment StoreEntitySet="ServicePhoto">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

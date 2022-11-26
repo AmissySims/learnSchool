@@ -32,6 +32,8 @@ namespace WpfApp1.Pages
             service = _service;
             service.DurationInSeconds /= 60;
             DataContext = service;
+            Update();
+            ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -63,49 +65,58 @@ namespace WpfApp1.Pages
             }
             
         }
-        int p = 1;
-        int k = 3;
+        int numberPage = 1;
+        int count = 3;
         int max = 0;
          private void Update()
         {
-            var lpr = BDConnect.db.ServicePhoto.ToList();
-            if (lpr.Count() % 2 == 0)
-                max = lpr.Count / k;
-            else max = (lpr.Count() + 1) / k;
+            //var servicePhotoList = BDConnect.db.ServicePhoto;
+            //if (servicePhotoList.Count() % 2 == 0)
+            //    max = servicePhotoList.Count() / count;
+            //else max = (servicePhotoList.Count() + 1) / count;
 
-            ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList().Where(x => x.ServiceID == service.ID);
+            //ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList().Where(x => x.ServiceID == service.ID);
+            IEnumerable<ServicePhoto> servicePhoto = BDConnect.db.ServicePhoto;
+            servicePhoto = servicePhoto.Skip(count * numberPage);
+            ExcessImage.ItemsSource = servicePhoto;
         }
 
         private void LeftBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (p >= 0)
+            numberPage--;
+            if (numberPage < 0)
             {
-                p--;
-                Update();
+                numberPage = 0;
             }
+            Update();
         }
 
         private void RightBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(p <= max - 1)
-            {
-                p++;
-                Update();
-            }
+
+             numberPage++;
+             Update();
+            if (ExcessImage.Items.Count < 3)
+                numberPage--;
+
 
         }
 
         private void AddAddBtn_Click(object sender, RoutedEventArgs e)
         {
+            ServicePhoto servicePhoto = new ServicePhoto();
             OpenFileDialog openFile = new OpenFileDialog()
             {
                 Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg",
             };
             if (openFile.ShowDialog().GetValueOrDefault())
             {
-                service.MainImagePath = File.ReadAllBytes(openFile.FileName);
-                ServiceImage.Source = new BitmapImage(new Uri(openFile.FileName));
+                servicePhoto.PhotoPath = File.ReadAllBytes(openFile.FileName);
+                servicePhoto.ServiceID = service.ID;
+                BDConnect.db.ServicePhoto.Add(servicePhoto);
+                BDConnect.db.SaveChanges();
             }
+            Update();
         }
 
         private void ClearAddBtn_Click(object sender, RoutedEventArgs e)
