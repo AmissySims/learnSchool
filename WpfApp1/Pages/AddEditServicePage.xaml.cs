@@ -77,7 +77,7 @@ namespace WpfApp1.Pages
 
             //ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList().Where(x => x.ServiceID == service.ID);
             IEnumerable<ServicePhoto> servicePhoto = BDConnect.db.ServicePhoto;
-            servicePhoto = servicePhoto.Skip(count * numberPage);
+            servicePhoto = servicePhoto.Skip(count * numberPage).Take(count);
             ExcessImage.ItemsSource = servicePhoto;
         }
 
@@ -85,9 +85,7 @@ namespace WpfApp1.Pages
         {
             numberPage--;
             if (numberPage < 0)
-            {
                 numberPage = 0;
-            }
             Update();
         }
 
@@ -95,9 +93,9 @@ namespace WpfApp1.Pages
         {
 
              numberPage++;
-             Update();
             if (ExcessImage.Items.Count < 3)
                 numberPage--;
+            Update();
 
 
         }
