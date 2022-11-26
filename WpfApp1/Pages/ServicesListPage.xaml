@@ -57,7 +57,7 @@
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="100"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <!--<Image Source="{Binding MainImagePath}" Grid.RowSpan="3" Height="100"></Image>-->
+                            <Image Source="{Binding MainImagePath}" Grid.RowSpan="3" Height="100"></Image>
                             <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
                             <!--<TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  >
                             <TextBlock.Text>
@@ -75,15 +75,15 @@
                                     <TextBlock Text="{Binding Cost, StringFormat=F}" Visibility="{Binding DiscountVisability}" TextDecorations="Strikethrough"></TextBlock>
                                     <TextBlock Text="{Binding CostDuration}"></TextBlock>
                                 </StackPanel>
-                                <TextBlock Text="{Binding StrDiscont}" HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock Text="{Binding StrDiscount}" HorizontalAlignment="Left"></TextBlock>
                             </StackPanel>
 
 
 
 
                             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                                <Button x:Name="CreateBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" Visibility="{Binding BtnVisible}">Редактировать</Button>
-                                <Button x:Name="DeleteBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Удалить</Button>
+                                <Button Click="CreateBtn_Click_1" x:Name="CreateBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" Visibility="{Binding BtnVisible}">Редактировать</Button>
+                                <Button Click="DeleteBtn_Click_1" x:Name="DeleteBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Удалить</Button>
                             </StackPanel>
 
                             <ListView BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3"   Style="{StaticResource HorizontalList}">

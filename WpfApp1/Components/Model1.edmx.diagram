@@ -28,7 +28,7 @@
         <AssociationConnector Association="Service1Model.FK_ProductPhoto_Product" />
         <AssociationConnector Association="Service1Model.FK_ProductSale_Product" />
         <AssociationConnector Association="Service1Model.AttachedProduct" />
-        <EntityTypeShape EntityType="Service1Model.Service" Width="1.5" PointX="0.75" PointY="18" />
+        <EntityTypeShape EntityType="Service1Model.Service" Width="1.5" PointX="10.25" PointY="18.5" />
         <AssociationConnector Association="Service1Model.FK_ClientService_Service" />
         <EntityTypeShape EntityType="Service1Model.ServicePhoto" Width="1.5" PointX="3" PointY="26.625" />
         <AssociationConnector Association="Service1Model.FK_ServicePhoto_Service" />

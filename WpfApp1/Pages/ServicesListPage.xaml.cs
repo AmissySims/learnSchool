@@ -31,10 +31,7 @@ namespace WpfApp1.Pages
             ServiceList.ItemsSource = BDConnect.db.Service.Where(x => x.IsDelete != true).ToList();
             GeneralCount.Text = BDConnect.db.Service.Count().ToString();
         }
-        private void CreateBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
         private void Refresh()
         {
             IEnumerable<Service> filterServices = BDConnect.db.Service.Where(x => x.IsDelete != true);
@@ -149,6 +146,24 @@ namespace WpfApp1.Pages
         private void OrderServiceBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new Nav("Заказ услуги", new OrderServicePage()));
+        }
+
+        private void CreateBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            var selService = (sender as Button).DataContext as Service;
+            Navigation.NextPage(new Nav("Редактирование услуги", new AddEditServicePage(selService)));
+        }
+
+        private void DeleteBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            var selService = (sender as Button).DataContext as Service;
+            if (MessageBox.Show("Точно хотите удалить?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                selService.IsDelete = true;
+                MessageBox.Show("Запись удалена");
+                BDConnect.db.SaveChanges();
+                ServiceList.ItemsSource = BDConnect.db.Service.Where(x => x.IsDelete != true);
+            }
         }
     }
 }
