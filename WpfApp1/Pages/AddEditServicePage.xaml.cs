@@ -119,7 +119,15 @@ namespace WpfApp1.Pages
 
         private void ClearAddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var sel = ExcessImage.SelectedItems as ServicePhoto;
+            if(sel != null)
+            {
+                if(MessageBox.Show("Точно хотите удалить?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    BDConnect.db.ServicePhoto.Remove(sel);
+                    BDConnect.db.SaveChanges();
+                }
+            }
         }
     }
 }
