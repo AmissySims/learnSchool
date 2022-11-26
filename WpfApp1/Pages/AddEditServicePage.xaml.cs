@@ -76,7 +76,7 @@ namespace WpfApp1.Pages
             //else max = (servicePhotoList.Count() + 1) / count;
 
             //ExcessImage.ItemsSource = BDConnect.db.ServicePhoto.ToList().Where(x => x.ServiceID == service.ID);
-            IEnumerable<ServicePhoto> servicePhoto = BDConnect.db.ServicePhoto;
+            IEnumerable<ServicePhoto> servicePhoto = BDConnect.db.ServicePhoto.Where(x => x.ServiceID == service.ID);
             servicePhoto = servicePhoto.Skip(count * numberPage).Take(count);
             ExcessImage.ItemsSource = servicePhoto;
         }
@@ -122,11 +122,14 @@ namespace WpfApp1.Pages
             var sel = ExcessImage.SelectedItems as ServicePhoto;
             if(sel != null)
             {
-                if(MessageBox.Show("Точно хотите удалить?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Точно хотите удалить?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     BDConnect.db.ServicePhoto.Remove(sel);
                     BDConnect.db.SaveChanges();
                 }
+                else
+                    MessageBox.Show("Выберите изображение");
+                Update();
             }
         }
     }
