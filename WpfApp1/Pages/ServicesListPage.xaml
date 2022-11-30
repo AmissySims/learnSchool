@@ -86,7 +86,7 @@
                                 <Button Click="DeleteBtn_Click_1" x:Name="DeleteBtn" Background="White" BorderBrush="LightBlue" BorderThickness="2" Height="30" Margin="5" >Удалить</Button>
                             </StackPanel>
 
-                            <ListView BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3"   Style="{StaticResource HorizontalList}">
+                            <ListView BorderBrush="White" VerticalAlignment="Bottom" Height="30"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ClientService}" Grid.Column="0" Grid.Row="3"   Style="{StaticResource HorizontalList}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Client.FirstName}" Background="LightBlue"></TextBlock>

@@ -61,6 +61,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Style="{StaticResource MyButton}" x:Name="AddAddBtn" Click="AddAddBtn_Click">Добавить дополнительное изображение</Button>
                 <Button Style="{StaticResource MyButton}" x:Name="ClearAddBtn" Click="ClearAddBtn_Click">Удалить дополнительное изображение</Button>
+                <Button Style="{StaticResource MyButton}" x:Name="RemoveAddBtn" Click="RemoveAddBtn_Click" >Поменять изображение</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

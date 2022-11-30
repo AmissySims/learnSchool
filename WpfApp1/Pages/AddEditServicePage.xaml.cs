@@ -67,7 +67,7 @@ namespace WpfApp1.Pages
         }
         int numberPage = 1;
         int count = 3;
-        int max = 0;
+       
          private void Update()
         {
             //var servicePhotoList = BDConnect.db.ServicePhoto;
@@ -119,7 +119,7 @@ namespace WpfApp1.Pages
 
         private void ClearAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var sel = ExcessImage.SelectedItems as ServicePhoto;
+            var sel = ExcessImage.SelectedItem as ServicePhoto;
             if(sel != null)
             {
                 if (MessageBox.Show("Точно хотите удалить?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -131,6 +131,11 @@ namespace WpfApp1.Pages
                     MessageBox.Show("Выберите изображение");
                 Update();
             }
+        }
+
+        private void RemoveAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
