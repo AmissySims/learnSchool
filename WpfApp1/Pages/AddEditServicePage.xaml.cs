@@ -145,10 +145,11 @@ namespace WpfApp1.Pages
                 PhotoPath = service.MainImagePath,
             };
             BDConnect.db.ServicePhoto.Add(servicePhoto);
+            BDConnect.db.ServicePhoto.Remove(sel);
             service.MainImagePath = sel.PhotoPath;
             BDConnect.db.SaveChanges();
             DataContext = service;
-
+           
 
 
 

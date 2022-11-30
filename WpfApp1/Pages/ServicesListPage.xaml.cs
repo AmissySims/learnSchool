@@ -25,6 +25,7 @@ namespace WpfApp1.Pages
         int actualPage = 0;
         public ServicesListPage()
         {
+            
             InitializeComponent();
             if(Navigation.AuthUser.RoleId == 2)
                 AddServiceBtn.Visibility = Visibility.Collapsed;
