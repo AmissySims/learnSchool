@@ -135,6 +135,23 @@ namespace WpfApp1.Pages
 
         private void RemoveAddBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (ExcessImage.SelectedItem == null)
+                return;
+
+            var sel = ExcessImage.SelectedItem as ServicePhoto;
+            ServicePhoto servicePhoto = new ServicePhoto()
+            {
+                ServiceID = service.ID,
+                PhotoPath = service.MainImagePath,
+            };
+            BDConnect.db.ServicePhoto.Add(servicePhoto);
+            service.MainImagePath = sel.PhotoPath;
+            BDConnect.db.SaveChanges();
+            DataContext = service;
+
+
+
+
 
         }
     }
